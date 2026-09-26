@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>API Performance Monitor</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <div>
+            <h1>API Performance Monitor</h1>
+            <p>Monitor API availability and response performance</p>
+        </div>
+
+        <div class="live-status">
+            ● Monitoring
+        </div>
+    </header>
+
+    <section class="monitor-card">
+
+        <h2>Test API Endpoint</h2>
+
+        <div class="input-area">
+            <input
+                type="url"
+                id="urlInput"
+                placeholder="https://api.example.com"
+                required
+            >
+
+            <button onclick="checkAPI()">
+                Check API
+            </button>
+        </div>
+
+        <p id="errorMessage"></p>
+
+    </section>
+
+    <section class="stats">
+
+        <div class="stat-card">
+            <span>Total Tests</span>
+            <strong id="totalTests">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Successful</span>
+            <strong id="successfulTests">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Failed</span>
+            <strong id="failedTests">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Avg Response</span>
+            <strong id="averageResponse">0 ms</strong>
+        </div>
+
+    </section>
+
+    <section class="result-card">
+
+        <div class="section-header">
+            <h2>Monitoring History</h2>
+            <button onclick="loadResults()">Refresh</button>
+        </div>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>API URL</th>
+                        <th>Status</th>
+                        <th>HTTP Code</th>
+                        <th>Response Time</th>
+                        <th>Size</th>
+                        <th>Checked At</th>
+                    </tr>
+                </thead>
+
+                <tbody id="resultsTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
